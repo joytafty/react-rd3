@@ -20,42 +20,36 @@ class App extends Component {
   }
 }
 
-/* 1st component - message*/
-var HelloMessage = React.createClass({
-  render: function() {
-    return <h1>Hello {this.props.name}</h1>;
-  }
-});
-
-ReactDOM.render(
-  <HelloMessage name="Joy" />,
-  document.getElementById('example')
-);
-
 /* 2nd component - barChart*/
 var barData = [
   {
-    "name": "Series A",
+    "name": "91130",
     "values": [
-      { "x": 1, "y":  91},
-      { "x": 2, "y": 290},
-      { "x": 3, "y": -25},
+      { "x": 10000, "y":  191},
+      { "x": 20000, "y": 390},
+      { "x": 30000, "y": 725},
+      { "x": 40000, "y": 512},
+      { "x": 50000, "y": 110},
     ]
   },
   {  
-    "name": "Series B",
+    "name": "94190",
     "values": [
-      { "x": 1, "y":  9},
-      { "x": 2, "y": 49},
-      { "x": 3, "y": -20},
+      { "x": 10000, "y":  9},
+      { "x": 20000, "y": 190},
+      { "x": 30000, "y": 125},
+      { "x": 40000, "y": 215},
+      { "x": 50000, "y": 30},
     ]
   },
   {  
-    "name": "Series C",
+    "name": "94110",
     "values": [
-      { "x": 1, "y":  14},
-      { "x": 2, "y": 77},
-      { "x": 3, "y": -70},
+      { "x": 10000, "y":  91},
+      { "x": 20000, "y": 290},
+      { "x": 30000, "y": 125},
+      { "x": 40000, "y": 15},
+      { "x": 50000, "y": 210},
     ]
   }
 ];
@@ -69,9 +63,9 @@ var BarComp = React.createClass({
       data={barData}
       width={500}
       height={300}
-      title="Bar Chart"
-      xAxisLabel="Value"
-      yAxisLabel="Label"
+      title="Price Histogram"
+      xAxisLabel="Price Bins"
+      yAxisLabel="No. Properties"
       />
   )}
 });
@@ -88,15 +82,15 @@ var ScatterChart = rd3.ScatterChart;
     var scatterData = [
       {
         name: "series1",
-        values: [ { x: 0, y: 20 }, { x: 5, y: 7 }, { x: 8, y: 3 }, { x: 13, y: 33 }, { x: 12, y: 10 }, { x: 13, y: 15 }, { x: 24, y: 8 }, { x: 25, y: 15 }, { x: 16, y: 10 }, { x: 16, y: 10 }, { x: 19, y: 30 }, { x: 14, y: 30 }]
+        values: [ { x: 110, y: 20 }, { x: 150, y: 71 }, { x: 800, y: 32 }, { x: 1300, y: 33 }, { x: 1200, y: 10 }, { x: 1310, y: 15 }, { x: 2410, y: 18 }, { x: 2510, y: 15 }, { x: 1610, y: 12 }, { x: 1630, y: 32 }, { x: 1930, y: 30 }, { x: 1477, y: 30 }]
       },
       {
         name: "series2",
-        values: [ { x: 40, y: 30 }, { x: 35, y: 37 }, { x: 48, y: 37 }, { x: 38, y: 33 }, { x: 52, y: 60 }, { x: 51, y: 55 }, { x: 54, y: 48 }, { x: 45, y: 45 }, { x: 46, y: 50 }, { x: 66, y: 50 }, { x: 39, y: 36 }, { x: 54, y: 30 }]
+        values: [ { x: 400, y: 30 }, { x: 350, y: 37 }, { x: 480, y: 37 }, { x: 1380, y: 33 }, { x: 5200, y: 60 }, { x: 5110, y: 55 }, { x: 5410, y: 48 }, { x: 4510, y: 45 }, { x: 4610, y: 50 }, { x: 6630, y: 55 }, { x: 3930, y: 36 }, { x: 5450, y: 38 }]
       },
       {
         name: "series3",
-        values: [ { x: 80, y: 78 }, { x: 71, y: 58 }, { x: 78, y: 68 }, { x: 81, y: 47 },{ x: 72, y: 70 }, { x: 70, y: 88 }, { x: 81, y: 90 }, { x: 92, y: 80 }, { x: 81, y: 72 }, { x: 99, y: 95 }, { x: 67, y: 81 }, { x: 96, y: 78 }]
+        values: [ { x: 800, y: 78 }, { x: 7100, y: 158 }, { x: 780, y: 68 }, { x: 1810, y: 47 },{ x: 7200, y: 70 }, { x: 7000, y: 88 }, { x: 8110, y: 110 }, { x: 9210, y: 90 }, { x: 8110, y: 72 }, { x: 9930, y: 95 }, { x: 6730, y: 81 }, { x: 9630, y: 78 }]
       }
     ];
 
@@ -108,6 +102,8 @@ var ScatterComp = React.createClass({
         width={500}
         height={400}
         title="Scatter Chart"
+        xAxisLabel="Price ($K)"
+        yAxisLabel="Area (Sqrt Ft)"
         domain={{x:[-15,], y:[-15,]}}
       />
   )}
