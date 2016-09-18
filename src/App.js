@@ -24,7 +24,7 @@ class App extends Component {
   }
 }
 
-// Routine for getting data from localStorage to BarChart (need to refactor)
+// Routine for getting data from localStorage to Histogram (need to refactor)
 // Read data from localStorage
 var fields = ["price", "bedrooms", "bathrooms",  "building_size"]
 var dictData = readLocalStorageToDict(fields)
@@ -49,7 +49,7 @@ function getXScale(data, width) {
 
 function parseHistogramData(data) {
   var plotDict;
-  var plotDictArray = histogramData.map(d => 
+  var plotDictArray = data.map(d => 
     plotDict = {"x":d.x, "y":d.length}
   )
   return plotDictArray
@@ -123,26 +123,39 @@ ReactDOM.render(
 /* 3rd component */
 var ScatterChart = rd3.ScatterChart;
 
-    var scatterData = [
+    var scatterData1 = [
       {
         name: "series1",
         values: [ { x: 110, y: 20 }, { x: 150, y: 71 }, { x: 800, y: 32 }, { x: 1300, y: 33 }, { x: 1200, y: 10 }, { x: 1310, y: 15 }, { x: 2410, y: 18 }, { x: 2510, y: 15 }, { x: 1610, y: 12 }, { x: 1630, y: 32 }, { x: 1930, y: 30 }, { x: 1477, y: 30 }]
-      },
-      {
-        name: "series2",
-        values: [ { x: 400, y: 30 }, { x: 350, y: 37 }, { x: 480, y: 37 }, { x: 1380, y: 33 }, { x: 5200, y: 60 }, { x: 5110, y: 55 }, { x: 5410, y: 48 }, { x: 4510, y: 45 }, { x: 4610, y: 50 }, { x: 6630, y: 55 }, { x: 3930, y: 36 }, { x: 5450, y: 38 }]
-      },
-      {
-        name: "series3",
-        values: [ { x: 800, y: 78 }, { x: 7100, y: 158 }, { x: 780, y: 68 }, { x: 1810, y: 47 },{ x: 7200, y: 70 }, { x: 7000, y: 88 }, { x: 8110, y: 110 }, { x: 9210, y: 90 }, { x: 8110, y: 72 }, { x: 9930, y: 95 }, { x: 6730, y: 81 }, { x: 9630, y: 78 }]
       }
     ];
+
+
+// 
+function parseScatterData(data, fields) {
+  var plotDict;
+  var xData = data[fields[0]]
+  var yData = data[fields[1]]
+  var plotDictArray = xData.map((x, i) => 
+    plotDict = {"x": x, "y":yData[i]}
+  )
+  return plotDictArray
+}
+
+var scatterFields = ['price', 'building_size']
+var scatterValues = parseScatterData(dictData, scatterFields)
+var scatterData = [
+  {
+    name: "price_vs_buildingsize",
+    values: scatterValues
+  }
+]
 
 var ScatterComp = React.createClass({
   render: function() {
     return  (
       <ScatterChart
-        data={scatterData}
+        data={scatterData1}
         width={500}
         height={400}
         title="Scatter Chart"
