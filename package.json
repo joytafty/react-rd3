@@ -4,9 +4,13 @@
   "private": true,
   "devDependencies": {
     "d3": "^3.5.17",
+    "d3-random": "^1.0.1",
+    "dataframe": "^1.5.0",
     "dsv-loader": "^1.1.0",
     "rd3": "^0.7.1",
-    "react-scripts": "0.4.1"
+    "react-d3-components": "^0.6.5",
+    "react-scripts": "0.4.1",
+    "webpage": "^0.3.0"
   },
   "dependencies": {
     "react": "^15.3.1",
